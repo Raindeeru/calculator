@@ -80,7 +80,7 @@ public class CalculatorController {
 
     @FXML
     private void handleCalcPad0() {
-        calcDisplay.setText("handleCalcPad0");
+        calcDisplay.setText("0");
     }
 
     @FXML
