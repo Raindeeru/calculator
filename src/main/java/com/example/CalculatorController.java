@@ -43,76 +43,96 @@ public class CalculatorController {
 
     @FXML
     private void handleCalcPad1() {
+        //button must input a 1
         calcDisplay.setText("handleCalcPad1");
     }
 
+    
     @FXML
     private void handleCalcPad2() {
+        //button must input a 2
         calcDisplay.setText("handleCalcPad2");
     }
 
     @FXML
     private void handleCalcPad3() {
+        //button must input a 3
         calcDisplay.setText("handleCalcPad3");
     }
 
     @FXML
     private void handleCalcPad4() {
+        //button must input a 4
         calcDisplay.setText("handleCalcPad4");
     }
 
     @FXML
     private void handleCalcPad5() {
+        //button must input a 5
         calcDisplay.setText("handleCalcPad5");
     }
 
     @FXML
     private void handleCalcPad6() {
+        //button must input a 6
         calcDisplay.setText("handleCalcPad6");
     }
 
     @FXML
     private void handleCalcPad7() {
+        //button must input a 7
         calcDisplay.setText("handleCalcPad7");
     }
 
     @FXML
     private void handleCalcPad8() {
+        //button must input a 8
         calcDisplay.setText("handleCalcPad8");
     }
 
     @FXML
     private void handleCalcPad9() {
+        //button must input a 9
         calcDisplay.setText("handleCalcPad9");
     }
 
     @FXML
     private void handleCalcPad0() {
+        //button must input a 0
         calcDisplay.setText("0");
     }
 
     @FXML
     private void handleCalcPadAdd() {
+        //button must input add function
+        //must transition to a operand from left operand to right
         calcDisplay.setText("handleCalcPadAdd");
     }
 
     @FXML
     private void handleCalcPadMinus() {
+        //button must input a minus
+        //must transition to a operand from left operand to right (same applies from handleCalcPadAdd)
         calcDisplay.setText("handleCalcPadMinus");
     }
 
     @FXML
     private void handleCalcPadMultiply() {
         calcDisplay.setText("handleCalcPadMultiply");
+        //button must input a multiply
+        //must transition to a operand from left operand to right (same applies from handleCalcPadAdd)
     }
 
     @FXML
     private void handleCalcPadDivide() {
         calcDisplay.setText("handleCalcPadDivide");
+        //button must input a Divide
+        //must transition to a operand from left operand to right (same applies from handleCalcPadAdd)
     }
 
     @FXML
     private void handleCalcPadDot() {
+        
         calcDisplay.setText("handleCalcPadDot");
     }
 
