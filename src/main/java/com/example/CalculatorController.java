@@ -16,6 +16,8 @@ import javafx.scene.control.Label;
  */
 
 public class CalculatorController {
+    float leftHandOp;
+    float rightHandOp;
 
     @FXML Label calcDisplay;
     @FXML Button calcPad1;
