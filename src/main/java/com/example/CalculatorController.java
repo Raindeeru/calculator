@@ -16,6 +16,8 @@ import javafx.scene.control.Label;
  */
 
 public class CalculatorController {
+    float leftHandOp;
+    float rightHandOp;
 
     @FXML Label calcDisplay;
     @FXML Button calcPad1;
@@ -39,11 +41,16 @@ public class CalculatorController {
     @FXML Button calcPadDelete;
     @FXML Button calcPadCE;
 
+<<<<<<< HEAD
     Boolean startInput = false; 
+=======
+    
+>>>>>>> 467dc2f17253887eecbcacc23ae76e8fdf3a0042
 
     @FXML
     private void handleCalcPad1() {
         //button must input a 1
+<<<<<<< HEAD
         if(startInput) calcDisplay.setText(calcDisplay.getText()+1);
         else{ 
             calcDisplay.setText("1");
@@ -61,83 +68,121 @@ public class CalculatorController {
             startInput = true; 
         }
         //calcDisplay.setText("handleCalcPad2");
+=======
+        calcDisplay.setText("1");
+    }
+
+
+    @FXML
+    private void handleCalcPad2() {
+        //button must input a 2
+        calcDisplay.setText((calcDisplay.getText()+"2"));
+>>>>>>> 467dc2f17253887eecbcacc23ae76e8fdf3a0042
     }
 
     @FXML
     private void handleCalcPad3() {
         //button must input a 3
+<<<<<<< HEAD
         if(startInput) calcDisplay.setText(calcDisplay.getText()+3);
         else{ 
             calcDisplay.setText("3");
             startInput = true; 
         }
         //calcDisplay.setText("handleCalcPad3");
+=======
+        calcDisplay.setText("3");
+>>>>>>> 467dc2f17253887eecbcacc23ae76e8fdf3a0042
     }
 
     @FXML
     private void handleCalcPad4() {
         //button must input a 4
+<<<<<<< HEAD
         if(startInput) calcDisplay.setText(calcDisplay.getText()+4);
         else{ 
             calcDisplay.setText("4");
             startInput = true; 
         }
         //calcDisplay.setText("handleCalcPad4");
+=======
+        calcDisplay.setText("4");
+>>>>>>> 467dc2f17253887eecbcacc23ae76e8fdf3a0042
     }
 
     @FXML
     private void handleCalcPad5() {
         //button must input a 5
+<<<<<<< HEAD
         if(startInput) calcDisplay.setText(calcDisplay.getText()+5);
         else{ 
             calcDisplay.setText("5");
             startInput = true; 
         }
         //calcDisplay.setText("handleCalcPad5");
+=======
+        calcDisplay.setText("5");
+>>>>>>> 467dc2f17253887eecbcacc23ae76e8fdf3a0042
     }
 
     @FXML
     private void handleCalcPad6() {
         //button must input a 6
+<<<<<<< HEAD
         if(startInput) calcDisplay.setText(calcDisplay.getText()+6);
         else{ 
             calcDisplay.setText("6");
             startInput = true; 
         }
         //calcDisplay.setText("handleCalcPad6");
+=======
+        calcDisplay.setText("6");
+>>>>>>> 467dc2f17253887eecbcacc23ae76e8fdf3a0042
     }
 
     @FXML
     private void handleCalcPad7() {
         //button must input a 7
+<<<<<<< HEAD
         //calcDisplay.setText("handleCalcPad7");
         if(startInput) calcDisplay.setText(calcDisplay.getText()+7);
         else{ 
             calcDisplay.setText("7");
             startInput = true; 
         }
+=======
+        calcDisplay.setText("7");
+>>>>>>> 467dc2f17253887eecbcacc23ae76e8fdf3a0042
     }
 
     @FXML
     private void handleCalcPad8() {
         //button must input a 8
+<<<<<<< HEAD
         //calcDisplay.setText("handleCalcPad8");
         if(startInput) calcDisplay.setText(calcDisplay.getText()+8);
         else{ 
             calcDisplay.setText("8");
             startInput = true; 
         }
+=======
+        calcDisplay.setText("8");
+>>>>>>> 467dc2f17253887eecbcacc23ae76e8fdf3a0042
     }
 
     @FXML
     private void handleCalcPad9() {
         //button must input a 9
+<<<<<<< HEAD
         //calcDisplay.setText("handleCalcPad9");
         if(startInput) calcDisplay.setText(calcDisplay.getText()+9);
         else{ 
             calcDisplay.setText("9");
             startInput = true; 
         }
+=======
+        calcDisplay.setText("9");
+>>>>>>> 467dc2f17253887eecbcacc23ae76e8fdf3a0042
     }
 
     @FXML
