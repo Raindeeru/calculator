@@ -18,6 +18,7 @@ import javafx.scene.control.Label;
 public class CalculatorController {
     float leftHandOp;
     float rightHandOp;
+    boolean activeOp = true;
 
     @FXML Label calcDisplay;
     @FXML Button calcPad1;
@@ -108,7 +109,9 @@ public class CalculatorController {
     private void handleCalcPadAdd() {
         //button must input add function
         //must transition to a operand from left operand to right
-        calcDisplay.setText("handleCalcPadAdd");
+        
+        calcDisplay.setText(calcDisplay.getText()+"+");
+        activeOp = false;
     }
 
     @FXML
