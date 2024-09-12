@@ -22,6 +22,10 @@ public class CalculatorController {
     boolean startInput = false; 
 
     boolean activeOp = true;
+<<<<<<< HEAD
+    char operand; 
+=======
+>>>>>>> 6d695dabca9374e90cbd05915c7ca93ddd66a45c
 
     @FXML Label calcDisplay;
     @FXML Button calcPad1;
@@ -198,6 +202,29 @@ public class CalculatorController {
 
     @FXML
     private void handleCalcPadEquals() {
+        
+        switch(operand){
+            case '+':
+            leftHandOp+=rightHandOp;
+            calcDisplay.setText(String.valueOf(leftHandOp));
+            break;
+
+            case '-':
+            leftHandOp-=rightHandOp;
+            calcDisplay.setText(String.valueOf(leftHandOp));
+            break;
+
+            case '/':
+            leftHandOp/=rightHandOp;
+            calcDisplay.setText(String.valueOf(leftHandOp));
+            break;
+
+            case 'x':
+            leftHandOp*=rightHandOp;
+            calcDisplay.setText(String.valueOf(leftHandOp));
+            break;
+
+        }
         calcDisplay.setText("handleCalcPadEquals");
     }
 
@@ -218,6 +245,7 @@ public class CalculatorController {
 
     @FXML
     private void handleCalcPadCE() {
-        calcDisplay.setText("handleCalcPadCE");
+        activeOp = true;
+        calcDisplay.setText("0");
     }
 }
