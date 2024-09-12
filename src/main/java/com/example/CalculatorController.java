@@ -29,13 +29,13 @@ public class CalculatorController {
     @FXML Button calcPad7;
     @FXML Button calcPad8;
     @FXML Button calcPad9;
-    @FXML Button calcPad0;
+    @FXML Button calcPad0; //Derven
     @FXML Button calcPadAdd;
     @FXML Button calcPadMinus;
     @FXML Button calcPadMultiply;
     @FXML Button calcPadDivide;
     @FXML Button calcPadDot;
-    @FXML Button calcPadEquals;
+    @FXML Button calcPadEquals; //Derven
     @FXML Button calcPadClear;
     @FXML Button calcPadNegative;
     @FXML Button calcPadDelete;
