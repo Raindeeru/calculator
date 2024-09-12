@@ -19,7 +19,10 @@ public class CalculatorController {
     float leftHandOp;
     float rightHandOp;
     boolean activeOp = true;
+<<<<<<< HEAD
     char operand; 
+=======
+>>>>>>> 6d695dabca9374e90cbd05915c7ca93ddd66a45c
 
     @FXML Label calcDisplay;
     @FXML Button calcPad1;
@@ -31,13 +34,13 @@ public class CalculatorController {
     @FXML Button calcPad7;
     @FXML Button calcPad8;
     @FXML Button calcPad9;
-    @FXML Button calcPad0;
+    @FXML Button calcPad0; //Derven
     @FXML Button calcPadAdd;
     @FXML Button calcPadMinus;
     @FXML Button calcPadMultiply;
     @FXML Button calcPadDivide;
     @FXML Button calcPadDot;
-    @FXML Button calcPadEquals;
+    @FXML Button calcPadEquals; //Derven
     @FXML Button calcPadClear;
     @FXML Button calcPadNegative;
     @FXML Button calcPadDelete;
@@ -56,6 +59,7 @@ public class CalculatorController {
         //calcDisplay.setText("handleCalcPad1");
     }
 
+    
     @FXML
     private void handleCalcPad2() {
         //button must input a 2
@@ -147,12 +151,7 @@ public class CalculatorController {
     @FXML
     private void handleCalcPad0() {
         //button must input a 0
-        //calcDisplay.setText("0");
-        if(startInput) calcDisplay.setText(calcDisplay.getText()+0);
-        else{ 
-            calcDisplay.setText("0");
-            startInput = true; 
-        }
+        calcDisplay.setText("0");
     }
 
     @FXML
