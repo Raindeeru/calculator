@@ -4,9 +4,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 /**
- * Group Name: <Group Name>
- * Group Members: <Group Members>
- * Course/Section: <Course/Section>
+ * Group Name: Guo x Quiboloy
+ * Group Members:   Matthew Payor
+ *                  Ricardo Gayagoy
+ *                  Louis Gascon
+ *                  Derven Gonzales
+ *                  John Joshua Botabara
+ *                  Karrin Frida Novero
+ *                  Bryle Florentino
+ * Course/Section:  CSS124L/BM1
  */
 
 public class CalculatorController {
