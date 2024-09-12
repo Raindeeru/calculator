@@ -16,12 +16,10 @@ import javafx.scene.control.Label;
  */
 
 public class CalculatorController {
-<<<<<<< HEAD
     float leftHandOp;
     float rightHandOp;
     boolean activeOp = true;
-=======
->>>>>>> 937b6cf7169bcf4b609d9510ba836fa8306266af
+    char operand; 
 
     @FXML Label calcDisplay;
     @FXML Button calcPad1;
@@ -162,7 +160,7 @@ public class CalculatorController {
         //button must input add function
         //must transition to a operand from left operand to right
         
-        calcDisplay.setText(calcDisplay.getText()+"+");
+        leftHandOp = Float.parseFloat(calcDisplay.getText());
         activeOp = false;
     }
 
@@ -195,6 +193,29 @@ public class CalculatorController {
 
     @FXML
     private void handleCalcPadEquals() {
+        
+        switch(operand){
+            case '+':
+            leftHandOp+=rightHandOp;
+            calcDisplay.setText(String.valueOf(leftHandOp));
+            break;
+
+            case '-':
+            leftHandOp-=rightHandOp;
+            calcDisplay.setText(String.valueOf(leftHandOp));
+            break;
+
+            case '/':
+            leftHandOp/=rightHandOp;
+            calcDisplay.setText(String.valueOf(leftHandOp));
+            break;
+
+            case 'x':
+            leftHandOp*=rightHandOp;
+            calcDisplay.setText(String.valueOf(leftHandOp));
+            break;
+
+        }
         calcDisplay.setText("handleCalcPadEquals");
     }
 
@@ -215,6 +236,7 @@ public class CalculatorController {
 
     @FXML
     private void handleCalcPadCE() {
-        calcDisplay.setText("handleCalcPadCE");
+        activeOp = true;
+        calcDisplay.setText("0");
     }
 }
