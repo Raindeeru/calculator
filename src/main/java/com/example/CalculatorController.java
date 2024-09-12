@@ -19,10 +19,6 @@ public class CalculatorController {
     float leftHandOp;
     float rightHandOp;
     boolean activeOp = true;
-<<<<<<< HEAD
-    char operand; 
-=======
->>>>>>> 6d695dabca9374e90cbd05915c7ca93ddd66a45c
 
     @FXML Label calcDisplay;
     @FXML Button calcPad1;
