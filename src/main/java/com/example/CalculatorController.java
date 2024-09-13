@@ -46,8 +46,6 @@ public class CalculatorController {
     @FXML Button calcPadDelete;
     @FXML Button calcPadCE;
 
-    
-
     @FXML
     private void handleCalcPad1() {
         //button must input a 1
@@ -155,11 +153,10 @@ public class CalculatorController {
     private void handleCalcPadAdd() {
         //button must input add function
         //must transition to a operand from left operand to right
-        
         if(activeOp){
             leftHandOp = Float.parseFloat(calcDisplay.getText());
             activeOp = false;
-        }else{
+        } else{
             rightHandOp = Float.parseFloat(calcDisplay.getText());
             leftHandOp += rightHandOp;
             calcDisplay.setText(String.valueOf(leftHandOp));
@@ -255,7 +252,7 @@ public class CalculatorController {
     @FXML
     private void handleCalcPadCE() {
         activeOp = true;
-        startInput
+        startInput = false; 
         calcDisplay.setText("0");
     }
 }
