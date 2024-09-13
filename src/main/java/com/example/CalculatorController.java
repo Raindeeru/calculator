@@ -24,6 +24,8 @@ public class CalculatorController {
     boolean activeOp = true;
     char operand = ' '; 
 
+    boolean isNegative = false;
+
     @FXML Label calcDisplay;
     @FXML Button calcPad1;
     @FXML Button calcPad2;
@@ -46,97 +48,58 @@ public class CalculatorController {
     @FXML Button calcPadDelete;
     @FXML Button calcPadCE;//done
 
-    
-
     @FXML
     private void handleCalcPad1() {
         //button must input a 1
-        if(startInput) calcDisplay.setText(calcDisplay.getText()+1);
-        else{ 
-            calcDisplay.setText("1");
-            startInput = true; 
-        }
+        setPadNum(1);
     }
 
     
     @FXML
     private void handleCalcPad2() {
-        //button must input a 2
-        if(startInput) calcDisplay.setText(calcDisplay.getText()+2);
-        else{ 
-            calcDisplay.setText("2");
-            startInput = true; 
-        }
+        setPadNum(2);
     }
 
     @FXML
     private void handleCalcPad3() {
         //button must input a 3
-        if(startInput) calcDisplay.setText(calcDisplay.getText()+3);
-        else{ 
-            calcDisplay.setText("3");
-            startInput = true; 
-        }
+        setPadNum(3);
     }
 
     @FXML
     private void handleCalcPad4() {
         //button must input a 4
-        if(startInput) calcDisplay.setText(calcDisplay.getText()+4);
-        else{ 
-            calcDisplay.setText("4");
-            startInput = true; 
-        }
+        setPadNum(4);
     }
 
     @FXML
     private void handleCalcPad5() {
         //button must input a 5
-        if(startInput) calcDisplay.setText(calcDisplay.getText()+5);
-        else{ 
-            calcDisplay.setText("5");
-            startInput = true; 
-        }
+       setPadNum(5);
     }
 
     @FXML
     private void handleCalcPad6() {
         //button must input a 6
-        if(startInput) calcDisplay.setText(calcDisplay.getText()+6);
-        else{ 
-            calcDisplay.setText("6");
-            startInput = true; 
-        }
+        setPadNum(6);
     }
 
     @FXML
     private void handleCalcPad7() {
         //button must input a 7
-        if(startInput) calcDisplay.setText(calcDisplay.getText()+7);
-        else{ 
-            calcDisplay.setText("7");
-            startInput = true; 
-        }
+        setPadNum(7);
     }
 
     @FXML
     private void handleCalcPad8() {
         //button must input a 8
-        if(startInput) calcDisplay.setText(calcDisplay.getText()+8);
-        else{ 
-            calcDisplay.setText("8");
-            startInput = true; 
-        }
+        setPadNum(8);
     }
 
     @FXML
     private void handleCalcPad9() {
         //button must input a 9
-        if(startInput) calcDisplay.setText(calcDisplay.getText()+9);
-        else{ 
-            calcDisplay.setText("9");
-            startInput = true; 
-        }
+        setPadNum(9);
     }
 
     @FXML
@@ -150,6 +113,7 @@ public class CalculatorController {
             calcDisplay.setText("0");
             startInput = true; 
         }
+    }
     }
 
     @FXML
@@ -265,13 +229,14 @@ public class CalculatorController {
 
     @FXML
     private void handleCalcPadNegative() {
-        if (startInput) {
-            if (!calcDisplay.getText().contains("-")) 
-                calcDisplay.setText("-" + calcDisplay.getText());
-            else if (calcDisplay.getText().equals("0")){ 
-                calcDisplay.setText("-");
-            }//mali pa ito lololol
-        } 
+        if(!isNegative){
+            calcDisplay.setText("-" + calcDisplay.getText());
+            isNegative = true;
+        }
+        else{
+            calcDisplay.setText(calcDisplay.getText().substring(1));
+            isNegative = false;
+        }
     }
 
     @FXML
@@ -286,9 +251,25 @@ public class CalculatorController {
         calcDisplay.setText("0");
     }
 
+    //Helper Function
+
     private void opClear(){
         activeOp = false;
         startInput = false;
+        isNegative = false;
         calcDisplay.setText("0");
+    }
+
+    private void setPadNum(int padNum){
+        if(startInput) calcDisplay.setText(calcDisplay.getText()+ padNum);
+        else{ 
+            if (!isNegative) {
+                calcDisplay.setText(Integer.toString(padNum));
+            }else{
+                calcDisplay.setText("-" + Integer.toString(padNum));
+
+            }
+            startInput = true; 
+        }
     }
 }
