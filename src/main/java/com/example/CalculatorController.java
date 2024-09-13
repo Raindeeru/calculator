@@ -143,7 +143,7 @@ public class CalculatorController {
     private void handleCalcPad0() {
         //button must input a 0
         if(startInput) {
-            if (!calcDisplay.getText().equals("0"));
+            if (!calcDisplay.getText().equals("0"))
             calcDisplay.setText(calcDisplay.getText() + 0);
         else{
             calcDisplay.setText("0");
