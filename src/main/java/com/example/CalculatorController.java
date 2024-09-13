@@ -125,9 +125,10 @@ public class CalculatorController {
         operand  = '+';
         if(activeOp){
             leftHandOp = Double.parseDouble(calcDisplay.getText());
+            activeOp = false;
+            opClear();
         }
-        activeOp = false;
-        opClear();
+        
     }
 
     @FXML
@@ -135,9 +136,9 @@ public class CalculatorController {
         operand = '-';
         if(activeOp){
             leftHandOp = Double.parseDouble(calcDisplay.getText());
-        }
-        activeOp = false;
-        opClear();
+            activeOp = false;
+            opClear();
+        }  
     }
 
     @FXML
@@ -146,9 +147,9 @@ public class CalculatorController {
         operand = '*';
         if(activeOp){
             leftHandOp = Double.parseDouble(calcDisplay.getText());
+            activeOp = false;
+            opClear();
         }
-        activeOp = false;
-        opClear();
     }
 
     @FXML
@@ -156,9 +157,9 @@ public class CalculatorController {
         operand = '/';
         if(activeOp){
             leftHandOp = Double.parseDouble(calcDisplay.getText());
+            activeOp = false;
+            opClear();
         }
-        activeOp = false;
-        opClear();
     }
 
     @FXML
@@ -198,9 +199,9 @@ public class CalculatorController {
                 normalClear();
                 break;
 
-            case 'x':
+            case '*':
                 rightHandOp = Double.parseDouble(calcDisplay.getText());
-                leftHandOp*=rightHandOp;
+                leftHandOp *= rightHandOp;
                 printCorrect(leftHandOp);
                 normalClear();
                 break;
