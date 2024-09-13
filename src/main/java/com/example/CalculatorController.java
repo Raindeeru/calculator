@@ -19,12 +19,11 @@ public class CalculatorController {
     double leftHandOp;
     double rightHandOp;
 
-    boolean startInput = false; 
+    boolean hasInputted = false; 
 
-    boolean activeOp = true;
-    char operand = ' '; 
+    boolean leftHandActive = true;
+    char operator = ' '; 
 
-    boolean isNegative = false;
 
     @FXML Label calcDisplay;
     @FXML Button calcPad1;
@@ -111,7 +110,7 @@ public class CalculatorController {
         }
         if (calcDisplay.getText().equals("")) {
             setPadNum(0);
-            startInput = false;
+            hasInputted = false;
         }
         else{
             setPadNum(0);
@@ -122,62 +121,48 @@ public class CalculatorController {
 
     @FXML
     private void handleCalcPadAdd() {
-        operand  = '+';
-        if(activeOp){
-            leftHandOp = Double.parseDouble(calcDisplay.getText());
-            activeOp = false;
-            opClear();
-        }
+        operationCondition();
+        operator  = '+';
         
     }
 
     @FXML
     private void handleCalcPadMinus() {
-        operand = '-';
-        if(activeOp){
-            leftHandOp = Double.parseDouble(calcDisplay.getText());
-            activeOp = false;
-            opClear();
-        }  
+        operationCondition();
+        operator = '-';
     }
 
     @FXML
     private void handleCalcPadMultiply() {
-
-        operand = '*';
-        if(activeOp){
-            leftHandOp = Double.parseDouble(calcDisplay.getText());
-            activeOp = false;
-            opClear();
-        }
+        operationCondition();
+        operator = '*';
     }
 
     @FXML
     private void handleCalcPadDivide() {
-        operand = '/';
-        if(activeOp){
-            leftHandOp = Double.parseDouble(calcDisplay.getText());
-            activeOp = false;
-            opClear();
-        }
+        operationCondition();
+        operator = '/';
     }
 
     @FXML
     private void handleCalcPadDot() {
         //calcDisplay.setText(".");
-        if (startInput) {
+        if (hasInputted) {
             if (!calcDisplay.getText().contains(".")) {
                 calcDisplay.setText(calcDisplay.getText() + ".");
             }
         } else {
             calcDisplay.setText("0.");
-            startInput = true;
+            hasInputted = true;
         }
     }
 
     @FXML
     private void handleCalcPadEquals() {
-        switch(operand){
+        if (calcDisplay.getText().isEmpty()) {
+            return;
+        }
+        switch(operator){
             case '+':
                 rightHandOp = Double.parseDouble(calcDisplay.getText());
                 leftHandOp += rightHandOp;
@@ -207,9 +192,6 @@ public class CalculatorController {
                 break;
 
             default:
-                leftHandOp = Double.parseDouble(calcDisplay.getText());
-                rightHandOp = Double.parseDouble(calcDisplay.getText());
-                printCorrect(leftHandOp);
                 break;
         }
     }
@@ -224,21 +206,20 @@ public class CalculatorController {
         if (calcDisplay.getText().equals("0")|| calcDisplay.getText().equals("")) {
             return;
         }
-        if(!isNegative){
-            calcDisplay.setText("-" + calcDisplay.getText());
-            isNegative = true;
-        }
-        else{
+
+        if (calcDisplay.getText().startsWith("-")) {
             calcDisplay.setText(calcDisplay.getText().substring(1));
-            isNegative = false;
+        }else{
+            calcDisplay.setText("-" + calcDisplay.getText());
         }
+
     }
 
     @FXML
     private void handleCalcPadDelete() {
         if(calcDisplay.getText().length() == 1){
             calcDisplay.setText("0");
-            startInput=false;
+            hasInputted=false;
         }
         else
         calcDisplay.setText(calcDisplay.getText().substring(0, calcDisplay.getText().length()-1));
@@ -246,38 +227,36 @@ public class CalculatorController {
 
     @FXML
     private void handleCalcPadCE() {
-        activeOp = true;
-        startInput = false;
+        leftHandActive = true;
+        operator = ' ';
+        hasInputted = false;
+        leftHandOp = 0;
+        rightHandOp = 0;
         calcDisplay.setText("");
     }
 
     //Helper Function
 
     private void opClear(){
-        activeOp = false;
-        startInput = false;
-        isNegative = false;
+        leftHandActive = true;
+        operator = ' ';
+        hasInputted = false;
         calcDisplay.setText("");
     }
 
     private void normalClear(){
-        activeOp = false;
-        startInput = false;
-        isNegative = false;
+        leftHandActive = true;
+        operator = ' ';
+        hasInputted = false;
         leftHandOp = 0;
         rightHandOp = 0;
     }
 
     private void setPadNum(int padNum){
-        if(startInput) calcDisplay.setText(calcDisplay.getText()+ padNum);
+        if(hasInputted) calcDisplay.setText(calcDisplay.getText()+ padNum);
         else{ 
-            if (!isNegative) {
-                calcDisplay.setText(Integer.toString(padNum));
-            }else{
-                calcDisplay.setText("-" + Integer.toString(padNum));
-
-            }
-            startInput = true; 
+            calcDisplay.setText(String.valueOf(padNum));
+            hasInputted = true; 
         }
     }
 
@@ -286,6 +265,14 @@ public class CalculatorController {
             calcDisplay.setText(String.valueOf (num ));
         }else{
             calcDisplay.setText(String.valueOf( (int) num));
+        }
+    }
+
+    private void operationCondition(){
+        if(leftHandActive && !calcDisplay.getText().isEmpty()){
+            leftHandOp = Double.parseDouble(calcDisplay.getText());
+            opClear();
+            leftHandActive = false;
         }
     }
 }
