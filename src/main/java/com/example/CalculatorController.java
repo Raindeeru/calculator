@@ -32,10 +32,10 @@ public class CalculatorController {
     @FXML Button calcPad8;
     @FXML Button calcPad9;
     @FXML Button calcPad0; //Derven
-    @FXML Button calcPadAdd;
-    @FXML Button calcPadMinus;
-    @FXML Button calcPadMultiply;
-    @FXML Button calcPadDivide;
+    @FXML Button calcPadAdd;//jr
+    @FXML Button calcPadMinus;//jr
+    @FXML Button calcPadMultiply;//jr
+    @FXML Button calcPadDivide;//jr
     @FXML Button calcPadDot;
     @FXML Button calcPadEquals; //Derven
     @FXML Button calcPadClear;
@@ -155,9 +155,10 @@ public class CalculatorController {
     private void handleCalcPadAdd() {
         //button must input add function
         //must transition to a operand from left operand to right
-        
         leftHandOp = Float.parseFloat(calcDisplay.getText());
         activeOp = false;
+        
+
         operand = '+';
     }
 
@@ -165,14 +166,16 @@ public class CalculatorController {
     private void handleCalcPadMinus() {
         //button must input a minus
         //must transition to a operand from left operand to right (same applies from handleCalcPadAdd)
-        calcDisplay.setText("handleCalcPadMinus");
+        leftHandOp = Float.parseFloat(calcDisplay.getText());
+        activeOp = false;
         operand = '-';
     }
 
     @FXML
     private void handleCalcPadMultiply() {
         calcDisplay.setText("handleCalcPadMultiply");
-
+        leftHandOp = Float.parseFloat(calcDisplay.getText());
+        activeOp = false;
         operand = '*';
         //button must input a multiply
         //must transition to a operand from left operand to right (same applies from handleCalcPadAdd)
@@ -181,6 +184,9 @@ public class CalculatorController {
     @FXML
     private void handleCalcPadDivide() {
         calcDisplay.setText("handleCalcPadDivide");
+        leftHandOp = Float.parseFloat(calcDisplay.getText());
+        activeOp = false;
+        operand = '/';
         //button must input a Divide
         //must transition to a operand from left operand to right (same applies from handleCalcPadAdd)
     }
@@ -196,6 +202,7 @@ public class CalculatorController {
         
         switch(operand){
             case '+':
+            
             leftHandOp+=rightHandOp;
             calcDisplay.setText(String.valueOf(leftHandOp));
             break;
@@ -216,7 +223,7 @@ public class CalculatorController {
             break;
 
         }
-        calcDisplay.setText("handleCalcPadEquals");
+        
     }
 
     @FXML
@@ -236,7 +243,10 @@ public class CalculatorController {
 
     @FXML
     private void handleCalcPadCE() {
+        startInput = false; 
         activeOp = true;
         calcDisplay.setText("0");
+        leftHandOp=0;
+        rightHandOp=0;
     }
 }
