@@ -145,6 +145,7 @@ public class CalculatorController {
         if(startInput) {
             if (!calcDisplay.getText().equals("0"));
             calcDisplay.setText(calcDisplay.getText() + 0);
+        }
         else{
             calcDisplay.setText("0");
             startInput = true; 
@@ -159,6 +160,7 @@ public class CalculatorController {
         if(activeOp){
             leftHandOp = Float.parseFloat(calcDisplay.getText());
             activeOp = false;
+            operand = '+';
         }else{
             rightHandOp = Float.parseFloat(calcDisplay.getText());
             leftHandOp += rightHandOp;
@@ -186,7 +188,9 @@ public class CalculatorController {
 
     @FXML
     private void handleCalcPadDivide() {
-        calcDisplay.setText("handleCalcPadDivide");
+        calcDisplay.setText("handleCalcPadMultiply");
+
+        operand = '*';
         //button must input a Divide
         //must transition to a operand from left operand to right (same applies from handleCalcPadAdd)
     }
@@ -227,8 +231,11 @@ public class CalculatorController {
             calcDisplay.setText(String.valueOf(leftHandOp));
             break;
 
+            default:
+            calcDisplay.setText(String.valueOf(leftHandOp));
+
         }
-        calcDisplay.setText("handleCalcPadEquals");
+        
     }
 
     @FXML
@@ -255,7 +262,7 @@ public class CalculatorController {
     @FXML
     private void handleCalcPadCE() {
         activeOp = true;
-        startInput
+        startInput=false;
         calcDisplay.setText("0");
     }
 }
