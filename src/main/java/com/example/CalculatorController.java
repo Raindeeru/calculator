@@ -22,7 +22,7 @@ public class CalculatorController {
     boolean startInput = false; 
 
     boolean activeOp = true;
-    char operand; 
+    char operand = ' '; 
 
     @FXML Label calcDisplay;
     @FXML Button calcPad1;
@@ -35,16 +35,16 @@ public class CalculatorController {
     @FXML Button calcPad8;
     @FXML Button calcPad9;
     @FXML Button calcPad0; //karrin
-    @FXML Button calcPadAdd;
-    @FXML Button calcPadMinus;
-    @FXML Button calcPadMultiply;
-    @FXML Button calcPadDivide;
+    @FXML Button calcPadAdd;//done
+    @FXML Button calcPadMinus;//done
+    @FXML Button calcPadMultiply;//done
+    @FXML Button calcPadDivide;//done
     @FXML Button calcPadDot;//karrin
-    @FXML Button calcPadEquals; //Derven
+    @FXML Button calcPadEquals; //done
     @FXML Button calcPadClear;
     @FXML Button calcPadNegative;//karrin
     @FXML Button calcPadDelete;
-    @FXML Button calcPadCE;
+    @FXML Button calcPadCE;//done
 
     
 
@@ -143,7 +143,7 @@ public class CalculatorController {
     private void handleCalcPad0() {
         //button must input a 0
         if(startInput) {
-            if (!calcDisplay.getText().equals("0"));
+            if (!calcDisplay.getText().equals("0"))
             calcDisplay.setText(calcDisplay.getText() + 0);
         }
         else{
@@ -156,41 +156,58 @@ public class CalculatorController {
     private void handleCalcPadAdd() {
         //button must input add function
         //must transition to a operand from left operand to right
-        
+        // if(activeOp){
+        //     leftHandOp = Float.parseFloat(calcDisplay.getText());
+        //     activeOp = false;
+        // }else{
+        //     rightHandOp = Float.parseFloat(calcDisplay.getText());
+        //     leftHandOp += rightHandOp;
+        //     calcDisplay.setText(String.valueOf(leftHandOp));
+        //     activeOp = true;
+        // }
+
+        operand  = '+';
         if(activeOp){
             leftHandOp = Float.parseFloat(calcDisplay.getText());
-            activeOp = false;
-            operand = '+';
-        }else{
-            rightHandOp = Float.parseFloat(calcDisplay.getText());
-            leftHandOp += rightHandOp;
-            calcDisplay.setText(String.valueOf(leftHandOp));
-            activeOp = true;
         }
+        activeOp = false;
+        opClear();
     }
 
     @FXML
     private void handleCalcPadMinus() {
         //button must input a minus
         //must transition to a operand from left operand to right (same applies from handleCalcPadAdd)
-        calcDisplay.setText("handleCalcPadMinus");
         operand = '-';
+        if(activeOp){
+            leftHandOp = Float.parseFloat(calcDisplay.getText());
+        }
+        activeOp = false;
+        opClear();
     }
 
     @FXML
     private void handleCalcPadMultiply() {
-        calcDisplay.setText("handleCalcPadMultiply");
+        
 
         operand = '*';
+        if(activeOp){
+            leftHandOp = Float.parseFloat(calcDisplay.getText());
+        }
+        activeOp = false;
+        opClear();
         //button must input a multiply
         //must transition to a operand from left operand to right (same applies from handleCalcPadAdd)
     }
 
     @FXML
     private void handleCalcPadDivide() {
-        calcDisplay.setText("handleCalcPadMultiply");
-
-        operand = '*';
+        operand = '/';
+        if(activeOp){
+            leftHandOp = Float.parseFloat(calcDisplay.getText());
+        }
+        activeOp = false;
+        opClear();
         //button must input a Divide
         //must transition to a operand from left operand to right (same applies from handleCalcPadAdd)
     }
@@ -212,30 +229,33 @@ public class CalculatorController {
     private void handleCalcPadEquals() {
         switch(operand){
             case '+':
+            rightHandOp = Float.parseFloat(calcDisplay.getText());
             leftHandOp+=rightHandOp;
             calcDisplay.setText(String.valueOf(leftHandOp));
             break;
 
             case '-':
+            rightHandOp = Float.parseFloat(calcDisplay.getText());
             leftHandOp-=rightHandOp;
             calcDisplay.setText(String.valueOf(leftHandOp));
             break;
 
             case '/':
+            rightHandOp = Float.parseFloat(calcDisplay.getText());
             leftHandOp/=rightHandOp;
             calcDisplay.setText(String.valueOf(leftHandOp));
             break;
 
-            case 'x':
+            case '*':
+            rightHandOp = Float.parseFloat(calcDisplay.getText());
             leftHandOp*=rightHandOp;
             calcDisplay.setText(String.valueOf(leftHandOp));
             break;
 
             default:
+            rightHandOp = Float.parseFloat(calcDisplay.getText());
             calcDisplay.setText(String.valueOf(leftHandOp));
-
         }
-        
     }
 
     @FXML
@@ -256,13 +276,19 @@ public class CalculatorController {
 
     @FXML
     private void handleCalcPadDelete() {
-        calcDisplay.setText("handleCalcPadDelete");
+        calcDisplay.setText(calcDisplay.getText().substring(0, calcDisplay.getText().length()-1));
     }
 
     @FXML
     private void handleCalcPadCE() {
         activeOp = true;
-        startInput=false;
+        startInput = false;
+        calcDisplay.setText("0");
+    }
+
+    private void opClear(){
+        activeOp = false;
+        startInput = false;
         calcDisplay.setText("0");
     }
 }
