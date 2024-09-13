@@ -33,19 +33,19 @@ public class CalculatorController {
     @FXML Button calcPad4;
     @FXML Button calcPad5;
     @FXML Button calcPad6;
-    @FXML Button calcPad7;
-    @FXML Button calcPad8;
-    @FXML Button calcPad9;
-    @FXML Button calcPad0; //karrin
+    @FXML Button calcPad7;//done
+    @FXML Button calcPad8;//done
+    @FXML Button calcPad9;//done
+    @FXML Button calcPad0; //done
     @FXML Button calcPadAdd;//done
     @FXML Button calcPadMinus;//done
     @FXML Button calcPadMultiply;//done
     @FXML Button calcPadDivide;//done
-    @FXML Button calcPadDot;//karrin
+    @FXML Button calcPadDot;//done
     @FXML Button calcPadEquals; //done
-    @FXML Button calcPadClear;
-    @FXML Button calcPadNegative;//karrin
-    @FXML Button calcPadDelete;
+    @FXML Button calcPadClear;//done
+    @FXML Button calcPadNegative;//done
+    @FXML Button calcPadDelete;//done
     @FXML Button calcPadCE;//done
 
     @FXML
@@ -114,7 +114,7 @@ public class CalculatorController {
             startInput = true; 
         }
     }
-    }
+    
 
     @FXML
     private void handleCalcPadAdd() {
@@ -224,12 +224,12 @@ public class CalculatorController {
 
     @FXML
     private void handleCalcPadClear() {
-        calcDisplay.setText("handleCalcPadClear");
+        calcDisplay.setText("");
     }
 
     @FXML
     private void handleCalcPadNegative() {
-        if(!isNegative){
+        if(!isNegative){ 
             calcDisplay.setText("-" + calcDisplay.getText());
             isNegative = true;
         }
@@ -241,6 +241,11 @@ public class CalculatorController {
 
     @FXML
     private void handleCalcPadDelete() {
+        if(calcDisplay.getText().length() == 1){
+            calcDisplay.setText("0");
+            startInput=false;
+        }
+        else
         calcDisplay.setText(calcDisplay.getText().substring(0, calcDisplay.getText().length()-1));
     }
 
@@ -248,7 +253,7 @@ public class CalculatorController {
     private void handleCalcPadCE() {
         activeOp = true;
         startInput = false;
-        calcDisplay.setText("0");
+        calcDisplay.setText("");
     }
 
     //Helper Function
