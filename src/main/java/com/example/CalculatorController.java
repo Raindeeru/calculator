@@ -117,10 +117,12 @@ public class CalculatorController {
         }
         
     }
-    
 
     @FXML
     private void handleCalcPadAdd() {
+        if (leftHandActive && calcDisplay.getText().isEmpty()) {
+            return;
+        }
         operationCondition();
         operator  = '+';
         
@@ -128,18 +130,27 @@ public class CalculatorController {
 
     @FXML
     private void handleCalcPadMinus() {
+        if (leftHandActive && calcDisplay.getText().isEmpty()) {
+            return;
+        }
         operationCondition();
         operator = '-';
     }
 
     @FXML
     private void handleCalcPadMultiply() {
+        if (leftHandActive && calcDisplay.getText().isEmpty()) {
+            return;
+        }
         operationCondition();
         operator = '*';
     }
 
     @FXML
     private void handleCalcPadDivide() {
+        if (leftHandActive && calcDisplay.getText().isEmpty()) {
+            return;
+        }
         operationCondition();
         operator = '/';
     }
@@ -167,28 +178,28 @@ public class CalculatorController {
                 rightHandOp = Double.parseDouble(calcDisplay.getText());
                 leftHandOp += rightHandOp;
                 printCorrect(leftHandOp);
-                normalClear();
+                fullClear();
             break;
 
             case '-':
                 rightHandOp = Double.parseDouble(calcDisplay.getText());
                 leftHandOp -= rightHandOp;
                 printCorrect(leftHandOp);
-                normalClear();
+                fullClear();
             break;
 
             case '/':
                 rightHandOp = Double.parseDouble(calcDisplay.getText());
                 leftHandOp/=rightHandOp;
                 printCorrect(leftHandOp);
-                normalClear();
+                fullClear();
                 break;
 
             case '*':
                 rightHandOp = Double.parseDouble(calcDisplay.getText());
                 leftHandOp *= rightHandOp;
                 printCorrect(leftHandOp);
-                normalClear();
+                fullClear();
                 break;
 
             default:
@@ -227,24 +238,19 @@ public class CalculatorController {
 
     @FXML
     private void handleCalcPadCE() {
-        leftHandActive = true;
-        operator = ' ';
-        hasInputted = false;
-        leftHandOp = 0;
-        rightHandOp = 0;
+        fullClear();
         calcDisplay.setText("");
     }
 
-    //Helper Function
-
-    private void opClear(){
+    //Helper Functions
+    private void smallClear(){
         leftHandActive = true;
         operator = ' ';
         hasInputted = false;
         calcDisplay.setText("");
     }
 
-    private void normalClear(){
+    private void fullClear(){
         leftHandActive = true;
         operator = ' ';
         hasInputted = false;
@@ -271,7 +277,7 @@ public class CalculatorController {
     private void operationCondition(){
         if(leftHandActive && !calcDisplay.getText().isEmpty()){
             leftHandOp = Double.parseDouble(calcDisplay.getText());
-            opClear();
+            smallClear();
             leftHandActive = false;
         }
     }
