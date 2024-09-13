@@ -105,14 +105,18 @@ public class CalculatorController {
     @FXML
     private void handleCalcPad0() {
         //button must input a 0
-        if(startInput) {
-            if (!calcDisplay.getText().equals("0"))
-            calcDisplay.setText(calcDisplay.getText() + 0);
+        
+        if(calcDisplay.getText().equals("0")){
+            return;
+        }
+        if (calcDisplay.getText().equals("")) {
+            setPadNum(0);
+            startInput = false;
         }
         else{
-            calcDisplay.setText("0");
-            startInput = true; 
+            setPadNum(0);
         }
+        
     }
     
 
@@ -175,36 +179,36 @@ public class CalculatorController {
         switch(operand){
             case '+':
                 rightHandOp = Double.parseDouble(calcDisplay.getText());
-                leftHandOp+=rightHandOp;
-                calcDisplay.setText(String.valueOf(leftHandOp));
+                leftHandOp += rightHandOp;
+                printCorrect(leftHandOp);
                 normalClear();
             break;
 
             case '-':
                 rightHandOp = Double.parseDouble(calcDisplay.getText());
                 leftHandOp -= rightHandOp;
-                calcDisplay.setText(String.valueOf(leftHandOp));
+                printCorrect(leftHandOp);
                 normalClear();
             break;
 
             case '/':
                 rightHandOp = Double.parseDouble(calcDisplay.getText());
                 leftHandOp/=rightHandOp;
-                calcDisplay.setText(String.valueOf(leftHandOp));
+                printCorrect(leftHandOp);
                 normalClear();
                 break;
 
             case 'x':
                 rightHandOp = Double.parseDouble(calcDisplay.getText());
                 leftHandOp*=rightHandOp;
-                calcDisplay.setText(String.valueOf(leftHandOp));
+                printCorrect(leftHandOp);
                 normalClear();
                 break;
 
             default:
                 leftHandOp = Double.parseDouble(calcDisplay.getText());
                 rightHandOp = Double.parseDouble(calcDisplay.getText());
-                calcDisplay.setText(String.valueOf(leftHandOp));
+                printCorrect(leftHandOp);
                 break;
         }
     }
@@ -273,6 +277,16 @@ public class CalculatorController {
 
             }
             startInput = true; 
+        }
+    }
+
+    private void printCorrect(double num){
+        if(((int)num - num) > 0){
+            System.out.println("hahahahaah");
+            calcDisplay.setText(String.valueOf (num ));
+        }else{
+            System.out.println("huhuhuuh");
+            calcDisplay.setText(String.valueOf( (int) num));
         }
     }
 }
