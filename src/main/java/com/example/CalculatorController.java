@@ -281,11 +281,9 @@ public class CalculatorController {
     }
 
     private void printCorrect(double num){
-        if(((int)num - num) > 0){
-            System.out.println("hahahahaah");
+        if(((int)num - num) != 0){
             calcDisplay.setText(String.valueOf (num ));
         }else{
-            System.out.println("huhuhuuh");
             calcDisplay.setText(String.valueOf( (int) num));
         }
     }
