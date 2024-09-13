@@ -19,6 +19,10 @@ public class CalculatorController {
     float leftHandOp;
     float rightHandOp;
     boolean activeOp = true;
+<<<<<<< HEAD
+    char operand; 
+=======
+>>>>>>> 6d695dabca9374e90cbd05915c7ca93ddd66a45c
 
     @FXML Label calcDisplay;
     @FXML Button calcPad1;
@@ -157,6 +161,7 @@ public class CalculatorController {
         
         leftHandOp = Float.parseFloat(calcDisplay.getText());
         activeOp = false;
+        operand = '+';
     }
 
     @FXML
@@ -164,11 +169,14 @@ public class CalculatorController {
         //button must input a minus
         //must transition to a operand from left operand to right (same applies from handleCalcPadAdd)
         calcDisplay.setText("handleCalcPadMinus");
+        operand = '-';
     }
 
     @FXML
     private void handleCalcPadMultiply() {
         calcDisplay.setText("handleCalcPadMultiply");
+
+        operand = '*';
         //button must input a multiply
         //must transition to a operand from left operand to right (same applies from handleCalcPadAdd)
     }
