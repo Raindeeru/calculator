@@ -250,7 +250,6 @@ public class CalculatorController {
                 calcDisplay.setText("-" + Integer.toString(padNum));
 
             }
-            
             startInput = true; 
         }
     }
