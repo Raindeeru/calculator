@@ -48,8 +48,6 @@ public class CalculatorController {
     @FXML Button calcPadDelete;
     @FXML Button calcPadCE;
 
-    
-
     @FXML
     private void handleCalcPad1() {
         //button must input a 1
